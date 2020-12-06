@@ -13,11 +13,6 @@ export default class Modal extends DOMable {
         this.body = null;
     }
 
-    reconfigure(config) {
-        this.config = config;
-        return this;
-    }
-
     build() {
         const modal = createTag('div', {
             class: 'modal',

@@ -20,6 +20,11 @@ export default class DOMable extends Piece {
         if (this.config == null) this.config = {};
     }
 
+    reconfigure(config) {
+        this.config = config;
+        return this;
+    }
+
     delete() {
         if (this.parent) {
             if (this.parent instanceof Element) this.parent.removeChild(this.dom);
