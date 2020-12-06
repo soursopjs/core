@@ -1,0 +1,40 @@
+{
+    "ignorePatterns": [
+        "node_modules/**/*.js",
+        "test/**/*.js",
+        "dist/**/*.js",
+        "build/**/*.js"
+    ],
+    "env": {
+        "browser": true,
+        "es2021": true
+    },
+    "extends": [
+        "airbnb-base"
+    ],
+    "parserOptions": {
+        "ecmaVersion": 12,
+        "sourceType": "module"
+    },
+    "rules": {
+        "indent": ["warn", 4],
+        "no-underscore-dangle": ["error", { "allowAfterThis": true }],
+        "arrow-parens": ["error", "as-needed"]
+    },
+    "overrides": [
+        {
+            "files": "./test/**/*.js",
+            "env": {
+                "browser": false,
+                "commonjs": true,
+                "node": true
+            },
+            "parserOptions": {
+                "sourceType": "script"
+            },
+            "rules": {
+                "quotes": "off"
+            }
+        }
+    ]
+}
