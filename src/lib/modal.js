@@ -54,9 +54,8 @@ export default class Modal extends DOMable {
         // Save
         this.body = body;
         this.dom = modal;
-        // this.dom.textContent = '';
-        // this.dom.appendChild(this.currentModal);
-        return modal;
+        this.addToParent();
+        return this;
     }
 
     /**

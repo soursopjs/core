@@ -1,5 +1,4 @@
 import DOMable from './domable';
-import Piece from './piece';
 
 export default class ProgressBar extends DOMable {
     /**
@@ -9,6 +8,10 @@ export default class ProgressBar extends DOMable {
      */
     constructor(parent, config) {
         super(parent, config);
+        this.dom = null;
+    }
+
+    build() {
         this.dom = document.createElement('div');
         this.dom.classList.add('progress');
         this.dom.classList.add('mb-3');
@@ -48,10 +51,8 @@ export default class ProgressBar extends DOMable {
 
         // Add to the DOM/Piece-parent
         this.dom.appendChild(this._progress);
-        if (this.parent) {
-            if (this.parent instanceof Element) this.parent.appendChild(this.dom);
-            else if (this.parent instanceof Piece) this.parent.add(this);
-        }
+        this.addToParent();
+        return this;
     }
 
     /**

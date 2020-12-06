@@ -20,6 +20,13 @@ export default class DOMable extends Piece {
         if (this.config == null) this.config = {};
     }
 
+    addToParent() {
+        if (this.parent) {
+            if (this.parent instanceof Element) this.parent.appendChild(this.dom);
+            else if (this.parent instanceof Piece) this.parent.add(this);
+        }
+    }
+
     reconfigure(config) {
         this.config = config;
         return this;
