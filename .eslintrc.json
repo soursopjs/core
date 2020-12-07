@@ -18,7 +18,8 @@
     "rules": {
         "indent": ["warn", 4],
         "no-underscore-dangle": ["error", { "allowAfterThis": true }],
-        "arrow-parens": ["error", "as-needed"]
+        "arrow-parens": ["error", "as-needed"],
+        "no-useless-constructor": ["warn"]
     },
     "overrides": [
         {
