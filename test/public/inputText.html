@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/bootstrap.css">
-    <title>Test Page - Checkbox</title>
+    <title>Test Page - InputText</title>
 </head>
 <body>
     <div class="container">
@@ -20,12 +20,11 @@
 
     <script>
         let container = document.getElementById("container");
-        let c = new soursopCore.Checkbox(container, {
+        let i = new soursopCore.InputText(container, {
             value: "goal",
             label: "Tomorrow is coming soon"
         });
-        c.build();
-        c.inputSimple.dom.id = "checkbox-element";
+        i.build();
     </script>
 </body>
 </html>
