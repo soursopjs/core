@@ -23,8 +23,8 @@ export default class InputText extends FormGroup {
     }
 
     build() {
+        this.inputSimple.build();
         const labelTag = createTag('label', { class: 'd-block' });
-        this.inputSimple.dom.classList.add('form-control');
         this.spanTag = createTag('span', { class: 'd-inline-block mb-2' });
         this.inputSimple.value = this.config.value || '';
         this.spanTag.innerText = this.config.label || '';
