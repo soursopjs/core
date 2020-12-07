@@ -20,12 +20,17 @@
 
     <script>
         let container = document.getElementById("container");
+        let v = false;
         let b = new soursopCore.Button(container, {
             value: "Click me if you can...",
             lg: true,
             type: 'a'
         });
         b.build();
+        b.dom.id = "button-n";
+        b.eventual.addEventListener("click", event => {
+            v = true;
+        }, false);
     </script>
 </body>
 </html>

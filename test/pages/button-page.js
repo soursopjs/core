@@ -12,6 +12,16 @@ class ButtonPage {
         return defined;
     }
 
+    async clickButton() {
+        await this.page.click("#button-n");
+    }
+
+    async isButtonClicked() {
+        // eslint-disable-next-line no-undef
+        const status = await this.page.evaluate(() => v);
+        return status;
+    }
+
     async enableButton() {
         // eslint-disable-next-line no-undef
         await this.page.evaluate(() => b.enable());

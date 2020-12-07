@@ -1,5 +1,6 @@
 import createTag from '../utils/create-tag';
 import DOMable from './domable';
+import Eventual from './eventual';
 
 export default class Button extends DOMable {
     constructor(parent, config) {
@@ -11,6 +12,7 @@ export default class Button extends DOMable {
     build() {
         this.tagName = this.config.tag || 'button';
         const button = createTag(this.tagName, { class: 'btn' });
+        this.eventual = new Eventual(button);
         // Configure the element
         if (this.config.lg) button.classList.add('btn-lg');
         if (this.config.sm) button.classList.add('btn-sm');

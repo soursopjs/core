@@ -46,15 +46,21 @@ describe("Button page", () => {
         expect(await buttonPage.isLoadedModalClass()).to.be.true;
     });
 
+    it("disables the button", async () => {
+        const buttonPage = new ButtonPage(page);
+        await buttonPage.disableButton();
+        expect(await buttonPage.isDisabled()).is.true;
+    });
+
     it("enables the button", async () => {
         const buttonPage = new ButtonPage(page);
         await buttonPage.enableButton();
         expect(await buttonPage.isDisabled()).is.false;
     });
 
-    it("disables the button", async () => {
+    it("clicking the button works", async () => {
         const buttonPage = new ButtonPage(page);
-        await buttonPage.disableButton();
-        expect(await buttonPage.isDisabled()).is.true;
-    });
+        await buttonPage.clickButton();
+        expect(await buttonPage.isButtonClicked()).is.true;
+    }).timeout(-1);
 });
