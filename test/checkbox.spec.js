@@ -57,4 +57,7 @@ describe("Checkbox page", () => {
         await checkboxPage.clickCheckbox();
         expect(await checkboxPage.isChecked()).is.false;
     }).timeout(-1);
+
+    it("triggers event when the checkbox is clicked");
+    it("changes the label text");
 });
