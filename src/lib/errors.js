@@ -46,3 +46,12 @@ export class ModalNotDefinedError extends PieceError {
         super(obj, message || 'The modal is not defined');
     }
 }
+
+/**
+ * This Error is thrown when the value of the DOM is weird
+ */
+export class DOMError extends PieceError {
+    constructor(obj, message) {
+        super(obj, message || 'Error caused by DOM');
+    }
+}

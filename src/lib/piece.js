@@ -4,6 +4,9 @@ import {
 } from './errors';
 
 export default class Piece {
+    /**
+     * A piece
+     */
     constructor() {
         this.subpieces = [];
         this.container = null;
@@ -11,6 +14,10 @@ export default class Piece {
 
     get length() { return this.subpieces.length; }
 
+    /**
+     * Add a piece into this
+     * @param {Piece} piece another Piece object
+     */
     add(piece) {
         if (!(piece instanceof Piece)) {
             throw new ItIsNotPieceError(piece);
@@ -20,6 +27,10 @@ export default class Piece {
         return this;
     }
 
+    /**
+     * Remove a piece
+     * @param {Piece} piece a Piece object
+     */
     remove(piece) {
         const index = this.subpieces.indexOf(piece);
         if (index < 0) {
