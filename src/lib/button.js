@@ -11,7 +11,16 @@ export default class Button extends DOMable {
 
     build() {
         this.tagName = this.config.tag || 'button';
-        const button = createTag(this.tagName, { class: 'btn' });
+        let classButton = '';
+        if (this.config.classes) {
+            if (typeof this.config.classes === 'string') {
+                classButton = ' '.concat(this.config.classes);
+            } else {
+                classButton = ' '.concat(this.config.classes.join(' '));
+            }
+        }
+        classButton = 'btn'.concat(classButton);
+        const button = createTag(this.tagName, { class: classButton });
         this.eventual = new Eventual(button);
         // Configure the element
         if (this.config.lg) button.classList.add('btn-lg');
