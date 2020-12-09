@@ -10,7 +10,8 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <div id="container"></div>
+                <div id="container" class="bg-primary"></div>
+                <div id="container2" class="bg-info"></div>
             </div>
         </div>
     </div>
@@ -20,6 +21,7 @@
 
     <script>
         let container = document.getElementById("container");
+        let container2 = document.getElementById("container2");
         let v = false;
         let b = new soursopCore.Button(container, {
             value: "Click me if you can...",
@@ -31,6 +33,10 @@
         b.eventual.addEventListener("click", event => {
             v = true;
         }, false);
+
+        function changeParent() {
+            b.changeParent(container2);
+        }
     </script>
 </body>
 </html>

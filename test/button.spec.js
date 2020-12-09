@@ -60,4 +60,10 @@ describe("Button page", () => {
         await buttonPage.clickButton();
         expect(await buttonPage.isButtonClicked()).is.true;
     });
+
+    it("changes the parent", async () => {
+        const buttonPage = new ButtonPage(page);
+        await buttonPage.changeParent();
+        expect(await buttonPage.wasChangedOfParent()).is.true;
+    });
 });

@@ -37,6 +37,18 @@ class ButtonPage {
         const status = await this.page.evaluate(() => b.isDisabled());
         return status;
     }
+
+    async changeParent() {
+        // eslint-disable-next-line no-undef
+        await this.page.evaluate(() => changeParent());
+    }
+
+    async wasChangedOfParent() {
+        /* eslint-disable no-undef */
+        const lengthOld = await this.page.evaluate(() => container.children.length);
+        const lengthNew = await this.page.evaluate(() => container2.children.length);
+        return lengthOld === 0 && lengthNew === 1;
+    }
 }
 
 module.exports = ButtonPage;
