@@ -5,6 +5,8 @@ import Checkbox from './lib/inputs/checkbox';
 import InputText from './lib/inputs/input-text';
 import Textarea from './lib/inputs/textarea';
 import Select from './lib/inputs/select';
+import MessageDialog from './lib/dialogboxes/messagedialog';
+import DialogBoxesConstants from './lib/dialogboxes/constants';
 
 export default {
     ProgressBar,
@@ -12,6 +14,8 @@ export default {
     Button,
     Checkbox,
     InputText,
-    Textarea,
-    Select,
+    dialogboxes: {
+        constants: DialogBoxesConstants,
+        MessageDialog,
+    },
 };

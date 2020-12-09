@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <title>Test Page - Model</title>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div id="container"></div>
+            </div>
+        </div>
+    </div>
+    <script src="/jquery.js"></script>
+    <script src="/js/bootstrap.js"></script>
+    <script src="/soursop-core.js"></script>
+
+    <script>
+        let v = null;
+        let buttonOk = new soursopCore.Button({value: "Ok"})
+        buttonOk.build();
+
+        messageDialog = new soursopCore.dialogboxes.MessageDialog(
+            document.body,
+            "Title of", "You are seeing this message",
+            [soursopCore.dialogboxes.constants.BUTTON_CANCEL, buttonOk]
+        );
+
+        buttonOk.eventual.addEventListener("click", () => {
+            v = true;
+            console.log("Ok Button");
+        });
+
+        let md = messageDialog;
+        messageDialog.show()
+        .then(id => {
+            console.log("Button say:", id, "?==", soursopCore.dialogboxes.constants.CANCEL);
+            if (id == soursopCore.dialogboxes.constants.CANCEL) v = false;
+        });
+    </script>
+    </body>
+</html>
