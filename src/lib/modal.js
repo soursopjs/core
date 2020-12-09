@@ -36,9 +36,15 @@ export default class Modal extends DOMable {
         });
         const span = createTag('span', { 'aria-hidden': 'true' });
         const body = createTag('div', { class: 'modal-body' });
+        const footer = createTag('div', { class: 'modal-footer' });
 
         // Check if a ModalBody object exists
         if (this.config.modalBody) this.add(this.config.modalBody);
+
+        // Check if there are buttons
+        if (this.config.buttons) {
+            this.config.buttons.forEach(button => { footer.appendChild(button.dom); });
+        }
 
         h5.id = 'modalTemporalLabel';
         h5.appendChild(document.createTextNode(this.config.title || ''));
@@ -49,6 +55,9 @@ export default class Modal extends DOMable {
         header.appendChild(close);
         content.appendChild(header);
         content.appendChild(body);
+        if (this.config.buttons) {
+            content.appendChild(footer);
+        }
         dialog.appendChild(content);
         modal.appendChild(dialog);
         // Save
