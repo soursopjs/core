@@ -6,10 +6,7 @@ const puppeteer = require('puppeteer');
 
 const CheckboxPage = require('./pages/checkbox-page');
 const { app } = require('./server');
-const puppeteerConfig = require('./puppeteer-config');
-
-const PORT = 5002;
-const URL = `http://localhost:${PORT}`;
+const config = require('./config');
 
 // Objects
 let server;
@@ -18,9 +15,9 @@ let page;
 
 // Functions to start and stop the server
 async function startApp() {
-    this.timeout(-1);
-    server = app.listen(PORT);
-    browser = await puppeteer.launch(puppeteerConfig);
+    this.timeout(0);
+    server = app.listen(config.PORT);
+    browser = await puppeteer.launch(config.puppeteer);
     page = await browser.newPage();
 }
 async function tearDown() {
@@ -34,7 +31,7 @@ describe("Checkbox page", () => {
 
     it("loads the page checkbox", async () => {
         const response = await page.goto(
-            `${URL}/checkbox.html`,
+            `${config.URL}/checkbox.html`,
             { waitUntil: "domcontentloaded" },
         );
 
@@ -50,13 +47,13 @@ describe("Checkbox page", () => {
         const checkboxPage = new CheckboxPage(page);
         await checkboxPage.clickCheckbox();
         expect(await checkboxPage.isChecked()).is.true;
-    }).timeout(-1);
+    });
 
     it("changes to unchecked when it is clicked two times", async () => {
         const checkboxPage = new CheckboxPage(page);
         await checkboxPage.clickCheckbox();
         expect(await checkboxPage.isChecked()).is.false;
-    }).timeout(-1);
+    });
 
     it("triggers event when the checkbox is clicked");
     it("changes the label text");

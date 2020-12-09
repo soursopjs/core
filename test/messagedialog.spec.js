@@ -6,10 +6,7 @@ const puppeteer = require('puppeteer');
 
 const MessageDialogPage = require('./pages/messagedialog-page');
 const { app } = require('./server');
-const puppeteerConfig = require('./puppeteer-config');
-
-const PORT = 5002;
-const URL = `http://localhost:${PORT}`;
+const config = require('./config');
 
 // Objects
 let server;
@@ -19,8 +16,8 @@ let page;
 // Functions to start and stop the server
 async function startApp() {
     this.timeout(0);
-    server = app.listen(PORT);
-    browser = await puppeteer.launch(puppeteerConfig);
+    server = app.listen(config.PORT);
+    browser = await puppeteer.launch(config.puppeteer);
     page = await browser.newPage();
 }
 async function tearDown() {
@@ -34,7 +31,7 @@ describe("MessageDialog page", () => {
 
     it("loads the page messagedialog", async () => {
         const response = await page.goto(
-            `${URL}/messagedialog.html`,
+            `${config.URL}/messagedialog.html`,
             { waitUntil: "domcontentloaded" },
         );
 

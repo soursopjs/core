@@ -6,10 +6,7 @@ const puppeteer = require('puppeteer');
 
 const ButtonPage = require('./pages/button-page');
 const { app } = require('./server');
-const puppeteerConfig = require('./puppeteer-config');
-
-const PORT = 5002;
-const URL = `http://localhost:${PORT}`;
+const config = require('./config');
 
 // Objects
 let server;
@@ -18,9 +15,9 @@ let page;
 
 // Functions to start and stop the server
 async function startApp() {
-    this.timeout(1000000);
-    server = app.listen(PORT);
-    browser = await puppeteer.launch(puppeteerConfig);
+    this.timeout(0);
+    server = app.listen(config.PORT);
+    browser = await puppeteer.launch(config.puppeteer);
     page = await browser.newPage();
 }
 async function tearDown() {
@@ -34,7 +31,7 @@ describe("Button page", () => {
 
     it("loads the page button", async () => {
         const response = await page.goto(
-            `${URL}/button.html`,
+            `${config.URL}/button.html`,
             { waitUntil: "domcontentloaded" },
         );
 
@@ -62,5 +59,5 @@ describe("Button page", () => {
         const buttonPage = new ButtonPage(page);
         await buttonPage.clickButton();
         expect(await buttonPage.isButtonClicked()).is.true;
-    }).timeout(-1);
+    });
 });

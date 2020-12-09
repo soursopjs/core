@@ -4,12 +4,9 @@
 const { expect } = require('chai');
 const puppeteer = require('puppeteer');
 
-const puppeteerConfig = require('./puppeteer-config');
+const config = require('./config');
 const ProgressBarPage = require('./pages/progressbar-page');
 const { app } = require('./server');
-
-const PORT = 5002;
-const URL = `http://localhost:${PORT}`;
 
 // Objects
 let server;
@@ -18,9 +15,9 @@ let page;
 
 // Functions to start and stop the server
 async function startApp() {
-    this.timeout(1000000);
-    server = app.listen(PORT);
-    browser = await puppeteer.launch(puppeteerConfig);
+    this.timeout(0);
+    server = app.listen(config.PORT);
+    browser = await puppeteer.launch(config.puppeteer);
     page = await browser.newPage();
 }
 async function tearDown() {
@@ -34,7 +31,7 @@ describe("ProgressBar page", () => {
 
     it("loads the page progressbar", async () => {
         const response = await page.goto(
-            `${URL}/progressbar.html`,
+            `${config.URL}/progressbar.html`,
             { waitUntil: "domcontentloaded" },
         );
 

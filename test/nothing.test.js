@@ -1,4 +1,6 @@
-const expect = require('chai').expect;
+/* global describe, it */
+/* eslint-disable no-unused-expressions */
+const { expect } = require('chai');
 
 describe("unit test", () => {
     it("Works", () => {
