@@ -6,7 +6,7 @@ class CheckboxPage {
     async isLoadedModalClass() {
         const defined = this.page.evaluate(() => {
             // eslint-disable-next-line no-undef
-            const x = soursopCore.Checkbox;
+            const x = soursopCore.inputs.Checkbox;
             return typeof x === "function" && /^\s*class\s+/.test(x.toString());
         });
         return defined;

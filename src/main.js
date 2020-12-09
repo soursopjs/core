@@ -12,8 +12,12 @@ export default {
     ProgressBar,
     Modal,
     Button,
-    Checkbox,
-    InputText,
+    inputs: {
+        Textarea,
+        Select,
+        Checkbox,
+        InputText,
+    },
     dialogboxes: {
         constants: DialogBoxesConstants,
         MessageDialog,
